@@ -56,7 +56,7 @@ app.post("/do_login", async (req, res)=>{
             let token = jwt.sign({"user_email": req.body.user_email}, KEY);
 
             res.cookie("token", token);
-            res.redirect("home")
+            res.redirect("/")
         }else{
             res.redirect('login');
         }
@@ -74,7 +74,7 @@ app.get("/logout",(req, res)=>{
     console.log("token: ", req.cookies.token);
 
     exe(`INSERT INTO block_tokens(block_token) VALUES(?)`,[req.cookies.token]);
-    res.redirect("/home")
+    res.redirect("/")
 })
 
 app.listen(1200);
