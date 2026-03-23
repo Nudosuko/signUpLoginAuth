@@ -65,7 +65,7 @@ app.post("/do_login", async (req, res)=>{
     }
 })
 
-app.get("/home",verifyToken, (req, res)=>{
+app.get("/",verifyToken, (req, res)=>{
     res.render("home", {user: req.user.user_email});
 })
 
